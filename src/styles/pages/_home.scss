@@ -15,7 +15,7 @@
         width: 100%;
         height: 96px;
         margin-bottom: 24px;
-        background: url(react_logo.svg);
+        background: url(/react_logo.svg);
         background-repeat: no-repeat;
         background-size: 96px 96px;
         background-position: center;
@@ -114,21 +114,21 @@
                 width: 80px;
                 height: 80px;
                 margin-right: 24px;
-                background: url(react.png);
+                background: url(/react.png);
                 background-repeat: no-repeat;
                 background-size: contain;
                 &.mobx {
-                    background: url(mobx.png);
+                    background: url(/mobx.png);
                     background-repeat: no-repeat;
                     background-size: contain;
                 }
                 &.reactrouter {
-                    background: url(reactrouter.png);
+                    background: url(/reactrouter.png);
                     background-repeat: no-repeat;
                     background-size: contain;
                 }
                 &.webpack {
-                    background: url(webpack.png);
+                    background: url(/webpack.png);
                     background-repeat: no-repeat;
                     background-size: contain;
                 }
@@ -186,7 +186,7 @@
         width: 24px;
         height: 24px;
         margin-right: 12px;
-        background: url(GitHub-Mark-32px.png);
+        background: url(/GitHub-Mark-32px.png);
         background-repeat: no-repeat;
         background-size: contain;
     }
@@ -194,7 +194,7 @@
         background: #000;
         color: #fff;
         &:before {
-            background: url(GitHub-Mark-Light-32px.png);
+            background: url(/GitHub-Mark-Light-32px.png);
             background-repeat: no-repeat;
             background-size: contain;
         }
