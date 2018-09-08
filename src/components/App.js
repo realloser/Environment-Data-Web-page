@@ -63,16 +63,7 @@ export default class App extends Component {
 					)}
 				/>
 				<footer>
-					{testval}
-					<a href="https://twitter.com/mhaagens" target="_blank">
-						@mhaagens
-					</a>
-					{" "}
-					| github:
-					{" "}
-					<a href="https://github.com/mhaagens" target="_blank">
-						mhaagens
-					</a>
+					<span>See here envrionment data collected using Arduino, Mosquitto, AWS IoT, DynamoDB, API Gateway and AWS Lambda</span>
 				</footer>
 			</div>
 		);
