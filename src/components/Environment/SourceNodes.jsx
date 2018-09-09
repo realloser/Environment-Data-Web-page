@@ -1,6 +1,8 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
+import SourceNode from './SourceNode.jsx';
+
 @observer
 class SourceNodes extends React.Component {
       constructor(props) {
@@ -32,7 +34,7 @@ class SourceNodes extends React.Component {
             const { nodes, fetchState, error } = this.state;
 
             const renderNode = (node) => {
-                  return node.name
+                  return <SourceNode node={node} />
             }
 
             switch (fetchState) {
