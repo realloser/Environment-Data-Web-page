@@ -18,6 +18,9 @@ export default class Home extends Component {
 				<div className="section-header">
 					<h3>Available Sources</h3>
 					<Sources />
+				</div>
+			</div>
+		)
 
-					}
-				}
+	}
+}
