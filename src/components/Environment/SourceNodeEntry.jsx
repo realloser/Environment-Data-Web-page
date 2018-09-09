@@ -29,13 +29,13 @@ const SourceNodeEntry = function (props) {
       }];
 
       const mapping = [
-            { key: 'primary_temperature', sortIndex: 2, displayName: 'Humidity Temperature', unit: '°C' },
-            { key: 'secondary_temperature', sortIndex: 6, displayName: 'Barometer Temperature', unit: '°C' },
-            { key: 'humidity', sortIndex: 3, displayName: 'Humidity', unit: '%' },
-            { key: 'batt', sortIndex: 7, displayName: 'Battery', unit: 'V' },
-            { key: 'light_intensity', sortIndex: 5, displayName: 'Lightintensity', unit: 'bit' },
-            { key: 'pressure', sortIndex: 4, displayName: 'Pressure', unit: 'Pa' },
-            { key: 'timeStamp', sortIndex: 1, displayName: 'Time', unit: '', convert: (value) => moment(new Date(value)).format('llll') },
+            { key: 'primary_temperature', sortIndex: 2, displayName: 'Humidity Temperature', format: true, unit: '°C' },
+            { key: 'secondary_temperature', sortIndex: 6, displayName: 'Barometer Temperature', format: true, unit: '°C' },
+            { key: 'humidity', sortIndex: 3, displayName: 'Humidity', format: true, unit: '%' },
+            { key: 'batt', sortIndex: 7, displayName: 'Battery', format: true, unit: 'V' },
+            { key: 'light_intensity', sortIndex: 5, displayName: 'Lightintensity', format: false, unit: 'bit' },
+            { key: 'pressure', sortIndex: 4, displayName: 'Pressure', format: true, unit: 'hPa' },
+            { key: 'timeStamp', sortIndex: 1, displayName: 'Time', format: 'llll', unit: '', convert: (value, props) => moment(new Date(value)).format(props.format || 'llll') },
       ]
       const data = [];
       for (let key in entry){
@@ -44,8 +44,8 @@ const SourceNodeEntry = function (props) {
             if (value === null && value === undefined || value === -1) {
                   continue;
             }
-            const convertedValue = map.convert && map.convert(value) || value;
-            const formattedValue = convertedValue.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2 });
+            const convertedValue = map.convert && map.convert(value, map) || value;
+            const formattedValue = map.format ? convertedValue.toLocaleString(undefined, {maximumFractionDigits: 2, minimumFractionDigits: 2 }) : convertedValue;
             const rowEntry = Object.assign({value: formattedValue}, map)
             data.push(rowEntry);
       }
