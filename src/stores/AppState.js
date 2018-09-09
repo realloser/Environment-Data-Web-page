@@ -7,20 +7,16 @@ export default class AppState {
   @observable items;
   @observable item;
 
-  @observable testval;
-
   constructor() {
     this.authenticated = false;
     this.authenticating = false;
     this.items = [];
     this.item = {};
-
-    this.testval = "Cobbled together by ";
   }
 
   async fetchData(pathname, id) {
     let { data } = await axios.get(
-      `https://jsonplaceholder.typicode.com${pathname}`
+      `https://zjpehz8xi5.execute-api.eu-west-1.amazonaws.com/V1/${pathname}`
     );
     console.log(data);
     data.length > 0 ? this.setData(data) : this.setSingle(data);
