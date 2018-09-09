@@ -32,6 +32,10 @@ class Sources extends React.Component {
       render() {
             const { sources, fetchState, error } = this.state;
 
+            const renderSource = (source) => {
+                  return <Source source={source} />
+            }
+
             switch (fetchState) {
                   case 'initialized':
                         return <span>Ui initialized.</span>
@@ -48,7 +52,7 @@ class Sources extends React.Component {
                         return (
                               <div>
                                     <span className="section-header">{sources.length} Sources</span>
-                                    <ul>{sources.map((source) => <Source source={source} />)}</ul>
+                                    <ul>{sources.map((source) => renderSource(source))}</ul>
                               </div>
                         )
                   default:
