@@ -34,7 +34,7 @@ const SourceNodeEntry = function (props) {
             { key: 'humidity', sortIndex: 3, displayName: 'Humidity', format: true, unit: '%' },
             { key: 'batt', sortIndex: 7, displayName: 'Battery', format: true, unit: 'V' },
             { key: 'light_intensity', sortIndex: 5, displayName: 'Lightintensity', format: false, unit: 'bit' },
-            { key: 'pressure', sortIndex: 4, displayName: 'Pressure', format: true, unit: 'hPa' },
+            { key: 'pressure', sortIndex: 4, displayName: 'Pressure', format: true, unit: 'hPa', convert: (value, props) => value < 11000 && value || value / 100 }, // value from BPM280 is not converted to hPa
             { key: 'timeStamp', sortIndex: 1, displayName: 'Time', format: 'llll', unit: '', convert: (value, props) => moment(new Date(value)).format(props.format || 'llll') },
       ]
       const data = [];
