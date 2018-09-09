@@ -36,22 +36,22 @@ class SourceNodes extends React.Component {
 
             const renderNode = (node) => {
                   return (
-                        <li>
+                        <div className='node item' key={node.node}>
                               <SourceNode node={node} />
                               <SourceNodeTop node={node} />
-                        </li>)
+                        </div>)
             }
 
             switch (fetchState) {
                   case 'initialized':
-                        return <span>initialized.</span>
+                        return <div><span>initialized.</span></div>
                   case 'fetching':
-                        return <span>Fetching nodes...</span>
+                        return <div><span>Fetching nodes...</span></div>
                   case 'failed':
                         return (
                               <div>
-                                    <span className={'error'}>Failed to fetch the data:</span>
-                                    <span className={'errorDetails'}>error</span>
+                                    <span className='error'>Failed to fetch the nodes:</span>
+                                    <span className='errorDetails'>{error.toString()}</span>
                               </div>
                         )
                   case 'done':
@@ -65,8 +65,8 @@ class SourceNodes extends React.Component {
                         console.error('invalid state:', fetchState)
                         return (
                               <div>
-                                    <span className={'error'}>Implementation error</span>
-                                    <span className={'errorDetails'}>unknown state</span>
+                                    <span className='error'>Implementation error</span>
+                                    <span className='errorDetails'>unknown state</span>
                               </div >
                         )
 

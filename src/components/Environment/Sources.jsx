@@ -34,35 +34,30 @@ class Sources extends React.Component {
       render() {
             const { sources, fetchState, error } = this.state;
 
-            const renderSource = (source) => {
-                  return <Source source={source} />
-            }
-
             switch (fetchState) {
                   case 'initialized':
-                        return <span>Ui initialized.</span>
+                        return <div><span>initialized.</span></div>
                   case 'fetching':
-                        return <span>Fetching sources...</span>
+                        return <div><span>Fetching sources...</span></div>
                   case 'failed':
                         return (
                               <div>
-                                    <span className={'error'}>Failed to fetch the data:</span>
-                                    <span className={'errorDetails'}>error</span>
-                              </div>
+                                    <span className='error'>Failed to fetch sources:</span>
+                                    <span className='errorDetails'>{error.toString()}</span>                              </div>
                         )
                   case 'done':
                         return (
                               <div>
                                     <span className='sources header'>{sources.length} Sources</span>
-                                    <div className='sources content'>{sources.map((source) => renderSource(source))}</div>
+                                    <div className='sources content'>{sources.map((source) => <Source source={source} />)}</div>
                               </div>
                         )
                   default:
                         console.error('invalid state:', fetchState)
                         return (
                               <div>
-                                    <span className={'error'}>Implementation error</span>
-                                    <span className={'errorDetails'}>unknown state</span>
+                                    <span className='error'>Implementation error</span>
+                                    <span className='errorDetails'>unknown state</span>
                               </div >
                         )
 

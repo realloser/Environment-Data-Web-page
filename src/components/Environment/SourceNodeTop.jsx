@@ -35,14 +35,14 @@ class SourceNodeTop extends React.Component {
 
             switch (fetchState) {
                   case 'initialized':
-                        return <span>initialized.</span>
+                        return <div><span>initialized.</span></div>
                   case 'fetching':
-                        return <span>Fetching top data...</span>
+                        return <div><span>Fetching top data...</span></div>
                   case 'failed':
                         return (
                               <div>
-                                    <span className={'error'}>Failed to fetch the data:</span>
-                                    <span className={'errorDetails'}>error</span>
+                                    <span className='error'>Failed to fetch the latest data:</span>
+                                    <span className='errorDetails'>{error.toString()}</span>
                               </div>
                         )
                   case 'done':
@@ -55,8 +55,8 @@ class SourceNodeTop extends React.Component {
                         console.error('invalid state:', fetchState)
                         return (
                               <div>
-                                    <span className={'error'}>Implementation error</span>
-                                    <span className={'errorDetails'}>unknown state</span>
+                                    <span className='error'>Implementation error</span>
+                                    <span className='errorDetails'>unknown state</span>
                               </div >
                         )
 

@@ -14,7 +14,7 @@ const SourceNodeEntry = function (props) {
             Header: 'Value',
             accessor: 'value', // String-based value accessors!
             maxWidth: 200,
-            style: {textAlign: right}
+            style: {textAlign: 'right'}
       },
       {
             Header: '',
