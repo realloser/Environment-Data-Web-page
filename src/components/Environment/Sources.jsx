@@ -53,6 +53,12 @@ class Sources extends React.Component {
                         )
                   default:
                         console.error('invalid state:', fetchState)
+                        return (
+                              <div>
+                                    <span className={'error'}>Implementation error</span>
+                                    <span className={'errorDetails'}>unknown state</span>
+                              </div >
+                        )
 
             }
 
