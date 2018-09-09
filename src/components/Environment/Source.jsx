@@ -12,14 +12,14 @@ class Source extends React.Component {
    render() {
       const { sourceName, display_name } = this.props.source;
       return (
-         <li key={sourceName} style={{ display: 'block' }}>
-            <div className='title nodes'>
+         <div className='source entry'>
+            <div className='source title'>
                <h4>{ display_name }</h4>
             </div>
-            <div className='nodes'>
+            <div className='source node container'>
                <SourceNodes source={this.props.source} />
             </div>
-         </li>
+         </div>
       )
    }
 }

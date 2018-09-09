@@ -2,6 +2,7 @@ import React from 'react';
 import { observer } from 'mobx-react';
 
 import SourceNode from './SourceNode.jsx';
+import SourceNodeTop from './SourceNodeTop.jsx';
 
 @observer
 class SourceNodes extends React.Component {
@@ -34,7 +35,11 @@ class SourceNodes extends React.Component {
             const { nodes, fetchState, error } = this.state;
 
             const renderNode = (node) => {
-                  return <SourceNode node={node} />
+                  return (
+                        <li>
+                              <SourceNode node={node} />
+                              <SourceNodeTop node={node} />
+                        </li>)
             }
 
             switch (fetchState) {
@@ -51,9 +56,9 @@ class SourceNodes extends React.Component {
                         )
                   case 'done':
                         return (
-                              <div>
-                                    <span className="section-header">{nodes.length} Nodes</span>
-                                    <ul>{nodes.map((node) => renderNode(node))}</ul>
+                              <div className='source items'>
+                                    <span className="source title">{nodes.length} Nodes</span>
+                                    <div className='nodes container'>{nodes.map((node) => renderNode(node))}</div>
                               </div>
                         )
                   default:

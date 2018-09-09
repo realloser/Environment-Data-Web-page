@@ -1,22 +1,21 @@
 import React from 'react';
 import { observer } from 'mobx-react';
 
-import Source from './Source.jsx';
-
-import 'react-table/react-table.css'
+import SourceNodeEntry from './SourceNodeEntry.jsx';
 
 @observer
-class Sources extends React.Component {
+class SourceNodeTop extends React.Component {
       constructor(props) {
             super(props);
             this.state = {
-                  sources: [],
+                  top: {},
                   fetchState: 'initialized',
             }
       }
       componentDidMount() {
             this.setState({ fetchState: 'fetching' });
-            fetch('https://zjpehz8xi5.execute-api.eu-west-1.amazonaws.com/V1/sources')
+            const nodesUrl = this.props.node.relations.top.href;
+            fetch(nodesUrl)
                   .then((response) => {
                         if (response.ok) {
                               return response.json();
@@ -24,7 +23,7 @@ class Sources extends React.Component {
                         throw new Error('Network response was not ok.');
                   })
                   .then(json => {
-                        this.setState({ sources: json.data, fetchState: 'done' })
+                        this.setState({ top: json.data, fetchState: 'done' })
                   })
                   .catch(e => {
                         this.setState({ fetchState: 'failed', error: e });
@@ -32,17 +31,13 @@ class Sources extends React.Component {
       }
 
       render() {
-            const { sources, fetchState, error } = this.state;
-
-            const renderSource = (source) => {
-                  return <Source source={source} />
-            }
+            const { top, fetchState, error } = this.state;
 
             switch (fetchState) {
                   case 'initialized':
-                        return <span>Ui initialized.</span>
+                        return <span>initialized.</span>
                   case 'fetching':
-                        return <span>Fetching sources...</span>
+                        return <span>Fetching top data...</span>
                   case 'failed':
                         return (
                               <div>
@@ -53,8 +48,7 @@ class Sources extends React.Component {
                   case 'done':
                         return (
                               <div>
-                                    <span className='sources header'>{sources.length} Sources</span>
-                                    <div className='sources content'>{sources.map((source) => renderSource(source))}</div>
+                                    <SourceNodeEntry entry={top} />
                               </div>
                         )
                   default:
@@ -71,4 +65,4 @@ class Sources extends React.Component {
       }
 }
 
-export default Sources
+export default SourceNodeTop
