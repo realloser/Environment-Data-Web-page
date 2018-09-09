@@ -10,7 +10,13 @@ const SourceNodeEntry = function (props) {
             showPagination: false,
             minRows: 0
       };
-      const columns = [{
+      const columns = [
+      {
+            Header: '',
+            accessor: 'displayName',
+            maxWidth: 300,
+      },
+      {
             Header: 'Value',
             accessor: 'value', // String-based value accessors!
             maxWidth: 200,
@@ -27,7 +33,7 @@ const SourceNodeEntry = function (props) {
             { key: 'secondary_temperature', sortIndex: 6, displayName: 'Barometer Temperature', unit: '°C' },
             { key: 'humidity', sortIndex: 3, displayName: 'Humidity', unit: '%' },
             { key: 'batt', sortIndex: 7, displayName: 'Battery', unit: 'V' },
-            { key: 'light_intensity', sortIndex: 5, displayName: 'Lightindensity', unit: 'bit' },
+            { key: 'light_intensity', sortIndex: 5, displayName: 'Lightintensity', unit: 'bit' },
             { key: 'pressure', sortIndex: 4, displayName: 'Pressure', unit: 'Pa' },
             { key: 'timeStamp', sortIndex: 1, displayName: 'Time', unit: '', convert: (value) => moment(new Date(value)).format('llll') },
       ]
@@ -35,7 +41,7 @@ const SourceNodeEntry = function (props) {
       for (let key in entry){
             const map = mapping.find(m => m.key===key);
             const value = entry[map.key];
-            if (!Boolean(value) || value === -1) {
+            if (value === null && value === undefined || value === -1) {
                   continue;
             }
             const convertedValue = map.convert && map.convert(value) || value;
