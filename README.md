@@ -1,25 +1,5 @@
-# React MobX React-Router 4 Boilerplate
+# Environment Sample Page
 
-### :tada: React, React-Router@next, MobX and Webpack 2.
-## [Demo](http://boilerplate.mhaagens.me)
+Sample page to show environment data calling **API Gateway** rest endpoints to fetch the data from the a DynamoDB. The data is collected using Arduino with sensores attached. The data is send to a **Mosquitto MQTT Broker**. The data is further bridged to **AWS IoT** which finally feeds the data into **DynamoDB**.
 
-Just run `npm install` and `npm start`, then go to localhost:3000 to start developing.
-To build, run `npm run build`, and to preview run `npm run preview`, then go
-to localhost:1234 for the minified production bundle.
-
-#### Async component loading
-Components are now loaded async with react-router-loader and the store is injected via MobX Provider. 
-If you've downloaded this boilerplate before remember to run `npm install` again.
-
-#### Read this if you've been using an earlier version of this boilerplate
-
-* 05/03/17 - Hot reloadable MobX stores
-* 04/04/17 - Upgraded to React Router 4 @ latest
-* 01/31/17 - Upgraded to React Router 4 Beta
-* 01/28/17 - Routes are now loaded through [Lazy-Route](https://github.com/mhaagens/lazy-route).
-
-### Todo
-
-- [X] Async loading of components
-- [X] Data fetching example
-- [X] Protected Routes
+As basis for this page an existing boilerplate repository was used: https://github.com/mhaagens/react-mobx-react-router4-boilerplate
