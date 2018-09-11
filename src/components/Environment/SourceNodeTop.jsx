@@ -15,19 +15,30 @@ class SourceNodeTop extends React.Component {
       componentDidMount() {
             this.setState({ fetchState: 'fetching' });
             const nodesUrl = this.props.node.relations.top.href;
-            fetch(nodesUrl)
-                  .then((response) => {
-                        if (response.ok) {
-                              return response.json();
-                        }
-                        throw new Error('Network response was not ok.');
-                  })
-                  .then(json => {
-                        this.setState({ top: json.data, fetchState: 'done' })
-                  })
-                  .catch(e => {
-                        this.setState({ fetchState: 'failed', error: e });
-                  });
+            const fetchData = () => {
+                  fetch(nodesUrl)
+                        .then((response) => {
+                              if (response.ok) {
+                                    return response.json();
+                              }
+                              throw new Error('Network response was not ok.');
+                        })
+                        .then(json => {
+                              this.setState({ top: json.data, fetchState: 'done' })
+                        })
+                        .catch(e => {
+                              this.setState({ fetchState: 'failed', error: e });
+                        })
+            };
+
+            fetchData();
+
+            // update the state every 2 minutes
+            this.interval = setInterval(fetchData, 2 * 60 * 1000);
+      }
+
+      componentWillUnmount() {
+            this.interval && clearInterval(this.interval);
       }
 
       render() {
