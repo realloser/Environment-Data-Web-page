@@ -43,9 +43,15 @@
             padding: 3px 0 2px 0;
         }
 
-        .node.title {
-            font-size: 1.4em;
-            padding: 3px 0 2px 0;
+        .node {
+            .title {
+                font-size: 1.4em;
+                padding: 3px 0 2px 0;
+            }
+            
+            .item {
+                width: 50%;
+            }
         }
     }
 
