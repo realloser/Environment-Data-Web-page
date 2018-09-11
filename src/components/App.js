@@ -41,27 +41,6 @@ export default class App extends Component {
 						<LazyRoute {...props} component={import("./Home")} />
 					)}
 				/>
-				<Route
-					exact
-					path="/posts"
-					render={props => (
-						<LazyRoute {...props} component={import("./SubPage")} />
-					)}
-				/>
-				<Route
-					exact
-					path="/posts/:id"
-					render={props => (
-						<LazyRoute {...props} component={import("./SubItem")} />
-					)}
-				/>
-				<Route
-					exact
-					path="/login"
-					render={props => (
-						<LazyRoute {...props} component={import("./Login")} />
-					)}
-				/>
 				<footer>
 					<span>See here envrionment data collected using Arduino, Mosquitto, AWS IoT, DynamoDB, API Gateway and AWS Lambda</span>
 				</footer>
