@@ -14,11 +14,9 @@ export default class Home extends Component {
 	render() {
 		const store = this.store;
 		return (
-			<div className="">
-				<div className="">
-					<h3>Available Sources</h3>
-					<Sources />
-				</div>
+			<div className="home content">
+				<h3>Available Sources</h3>
+				<Sources />
 			</div>
 		)
 

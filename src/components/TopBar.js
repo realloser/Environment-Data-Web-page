@@ -24,12 +24,17 @@ export default class TopBar extends Component {
 		const { authenticated } = this.store;
 		return (
 			<div className="topbar">
+				<div className="title">
+					<h1>Welcome to the environment data overview</h1>
+				</div>
+				<div className="navigation">
 				<TopNav location={this.props.location} />
 				<Button
 					onClick={this.authenticate.bind(this)}
 					title={authenticated ? "Log out" : "Sign in"}
 				/>
 			</div>
+			</div >
 		);
 	}
 }

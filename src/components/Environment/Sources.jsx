@@ -49,7 +49,7 @@ class Sources extends React.Component {
                         return (
                               <div>
                                     <span className='sources header'>{sources.length} Sources</span>
-                                    <div className='sources content'>{sources.map((source) => <Source source={source} />)}</div>
+                                    <div className='sources container'>{sources.map((source) => <Source source={source} />)}</div>
                               </div>
                         )
                   default:
